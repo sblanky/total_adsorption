@@ -1,1 +1,6 @@
-HTb300
+HTb300*
+original_units.png
+other_units.png
+result.csv
+*.swp
+__pycache__/

@@ -1,10 +1,10 @@
 data_data_
-_exptl_operator 'Nawaf'
+_exptl_operator 'example'
 _exptl_instrument 'Xemis'
 _exptl_adsorptive CH4
 _exptl_temperature 298
-_sample_id 'HTb300-4800'
-_sample_material_id 'HTb300-4800'
+_sample_id 'example'
+_sample_material_id 'example'
 _units_temperature K
 _units_pressure mbar
 _units_mass g
