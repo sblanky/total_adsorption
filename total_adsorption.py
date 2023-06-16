@@ -83,7 +83,6 @@ def total_adsorption(
 
 if __name__ == "__main__":
     import matplotlib.pyplot as plt
-    import pandas as pd
     isotherm = pgm.isotherm_from_aif('./HTb300-4800.aif')
     total_isotherm = total_adsorption(isotherm, 1.08)
     for iso in [isotherm, total_isotherm]:
