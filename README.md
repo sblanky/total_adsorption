@@ -29,4 +29,5 @@ Or plotted with the convenient pyGAPS graphing module;
 import pygaps.graphing as pgg
 import matplotlib.pyplt as plt # may be necessary on some systems
 pgg.plot_iso([isotherm, total_isotherm])
+plt.show()
 ```

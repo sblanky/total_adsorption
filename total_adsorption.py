@@ -1,5 +1,5 @@
 import pygaps as pg
-import pygaps.parsing as pgm
+import pygaps.parsing as pgp
 import pygaps.graphing as pgg
 from pygaps.core.modelisotherm import ModelIsotherm
 from pygaps.core.pointisotherm import PointIsotherm
@@ -83,7 +83,7 @@ def total_adsorption(
 
 if __name__ == "__main__":
     import matplotlib.pyplot as plt
-    isotherm = pgm.isotherm_from_aif('./HTb300-4800.aif')
+    isotherm = pgp.isotherm_from_aif('./HTb300-4800.aif')
     total_isotherm = total_adsorption(isotherm, 1.08)
     for iso in [isotherm, total_isotherm]:
         iso.convert(
