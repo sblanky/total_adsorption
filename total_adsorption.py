@@ -12,12 +12,20 @@ def density(
     T: float,
     adsorbate: str,
 ):
-    return PropsSI(
-        'D',
-        'T', T,
-        'P|gas', p,
-        adsorbate
-    )
+    try:
+        return PropsSI(
+            'D',
+            'T', T,
+            'P|gas', p,
+            adsorbate
+        )
+    except ValueError as e:
+        print(
+            f'Maybe one of your variables is the wrong type?\n'
+            f'p:\t{type(p)}\n'
+            f'T:\t{type(T)}\n'
+            f'adsorbate:\t{type(adsorbate)}'
+        )
 
 
 def total_molar(
@@ -37,11 +45,9 @@ def total_adsorption(
     total_pore_volume: float,
 ):
 
-    isotherm.convert(
-        pressure_unit='Pa',
-        material_unit='kg',
-        loading_unit='mol'
-    )
+    isotherm.convert_loading(basis_to='molar', unit_to='mol')
+    isotherm.convert_material(basis_to='mass', unit_to='kg')
+    isotherm.convert_pressure(mode_to='absolute', unit_to='Pa')
     isotherm.convert_temperature(unit_to='K')
 
     adsorbate = isotherm.adsorbate
@@ -50,9 +56,14 @@ def total_adsorption(
     temperature = isotherm.temperature
 
     total_loading = []
+    pressure = []
     for n in excess_loading:
+        p = float(isotherm.pressure_at(n))
+        if (n <= 0 or p<=0):
+            continue
+
         d = density(
-            float(isotherm.pressure_at(n)),
+            p,
             temperature,
             str(adsorbate)
             )
@@ -60,9 +71,10 @@ def total_adsorption(
             d, n,
             total_pore_volume, molar_mass,)
         total_loading.append(total)
+        pressure.append(p)
 
     total_isotherm = pg.PointIsotherm(
-        pressure=isotherm.pressure(),
+        pressure=pressure,
         loading=total_loading,
 
         material=isotherm.material,
