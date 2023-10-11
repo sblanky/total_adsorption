@@ -1,8 +1,8 @@
 Simple module for calculating total adsorption from an excess adsorption isotherm.
 
-Not yet installable.
+Relies on [pyGAPS](https://github.com/pauliacomi/pyGAPS/) for isotherm import and modelling, as well as [CoolProp](http://www.coolprop.org/coolprop/wrappers/Python/index.html) for density calculations. Isotherms must be in `pyGAPS` class, i.e. `PointIsotherm` or `ModelIsotherm`. Pore volume must also be known (e.g. via nitrogen porosimetry).
 
-Relies on [pyGAPS](https://github.com/pauliacomi/pyGAPS/) for isotherm import and modelling, as well as [CoolProp](http://www.coolprop.org/coolprop/wrappers/Python/index.html) for density calculations. Files must be in [`.aif` format](https://raw2aif.adsorptioninformationformat.com/) in order to be parsed, with the adsorbate and experimental temperatures defined. Pore volume must also be known (e.g. via nitrogen porosimetry).
+Not yet installable; just copy `total_adsorption.py` into your working directory, and follow insructions below.
 
 ### Basic use
 
